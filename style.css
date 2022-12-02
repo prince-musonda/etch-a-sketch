@@ -1,0 +1,81 @@
+html,body{
+    height: 5%;
+    height:100%;
+    background-color: rgba(121, 116, 116, 0.055);
+    padding: 0;;
+    margin: 0;
+    
+}
+h1{
+    
+    font-family: 'Rubik Distressed';
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    margin:0;
+    margin-top: 8px;
+    padding:0;
+}
+
+#main-container{
+    display: flex;
+    gap: 7%;
+    height: 95%;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding:0;
+}
+#controls, #grid{
+    height: 80%;
+}
+#controls{
+
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+#grid{
+    background-color: white;
+    width: 45%;
+    box-shadow: 1px 2px 20px black;
+}
+.gridItem:hover{
+    background-color: rgba(0, 0, 0, 0.623);
+    cursor:pointer;
+    opacity: 0.8;
+}
+img{
+    height:90%;
+}
+button{
+    padding: 10px;
+    border: 2px solid rgba(34, 32, 32, 0.712);
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:rgba(34, 32, 32, 0.94);
+    background-color: white;
+}
+#eraser{
+    
+    border:none;
+    border-radius: 5px;
+    height: 15%;
+    padding: 0;
+    box-shadow: 1px 1px 5px black;
+    line-height: 25px;;
+}
+button:active{
+    transform: scale(1.1);
+}
+button:hover{
+    background-color: gray;
+    color:whitesmoke;
+    border-color: white;
+    cursor: pointer;
+}
+
+#eraser:hover{
+    color: black;
+}
