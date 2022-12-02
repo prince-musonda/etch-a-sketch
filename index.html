@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Etch-a-Sketch</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h1>Etch-a-Sketch</h1>
+    <div id="main-container">
+        <div id="controls">
+            <button id="random-color-btn">Random Color</button>
+            <button id="clear-button">Clear</button>
+            <button id="eraser">
+                <img src="images/eraser.svg" alt="eraser image which acts as a button" >
+                <br>eraser
+            </button>
+            <div>
+                <input type="range" id = 'slider' min="2" max="64" value="20" step="2">
+                <label for="slider" style="display:block; text-align:center"></label>
+            </div>
+        </div>
+        <div id="grid">
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
