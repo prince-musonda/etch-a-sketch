@@ -3,10 +3,13 @@ let eraserEnabled = false;
 const randomColorButton = document.querySelector('#random-color-btn')
 let randomColorEnabled = false
 const clearButton = document.querySelector('#clear-button')
+const colorPickerButton = document.querySelector('#color-picker-btn')
+colorPickerButton.value = defaultColor
+const hoverButton = document.querySelector('#hover-btn')
 const eraserButton = document.querySelector('#eraser')
 const grid = document.querySelector('#grid')
 const rangeSlider = document.querySelector("input[type='range']")
-const sliderLabel = document.querySelector('label')
+const sliderLabel = document.querySelector('label[for="slider"]')
 let numberOfSquares = Number(rangeSlider.value)//default value of 20
 sliderLabel.textContent = rangeSlider.value + ' X ' + rangeSlider.value
 
@@ -46,22 +49,27 @@ function changeBackground(e){
  }
 
 //adding event Listeners to the grid items
-gridItems = grid.children;
-gridItemsArr = [...gridItems]
-gridItemsArr.forEach(function (box){
-    box.addEventListener('click',changeBackground)
-})
+addEventListenerToGridItems()
+function addEventListenerToGridItems(){
+    gridItems = grid.children;
+    gridItemsArr = [...gridItems]
+    gridItemsArr.forEach(function (box){
+        box.addEventListener('click',changeBackground)
+    }) 
+}
 
 //functionality for when the eraser button is clicked
 function changeEraserStatus(){
     if (eraserEnabled == true){
         //reset the background color so as to show that it has now become inactive
         eraserEnabled = false
-        eraserButton.style.backgroundColor = 'white'
+        eraserButton.classList.remove('enabled-btn-effect')
     }else{
         // change the background of the eraser button so as to show it is active
         eraserEnabled = true
-        eraserButton.style.backgroundColor = 'gray'
+        eraserButton.classList.add('enabled-btn-effect')
+        randomColorButton.classList.remove('enabled-btn-effect')
+        randomColorEnabled = false
     }
 }
 
@@ -72,8 +80,8 @@ eraserButton.addEventListener('click',changeEraserStatus)
 function changeGridSize(e){
     sliderLabel.textContent = rangeSlider.value + ' X ' + rangeSlider.value
     numberOfSquares = Number(e.target.value)
-    clearGrid()
     createGrid()
+    addEventListenerToGridItems()
 }
 
 //adding event Listener to the slider
@@ -100,15 +108,36 @@ function generateRandomColor(){
 function changeRandomColorStatus(e){
     //enable the random color button
     if(randomColorEnabled == false){
-    e.target.style.backgroundColor = 'gray'
-    e.target.style.color = 'whitesmoke' 
-    randomColorEnabled = true  
+    randomColorButton.classList.add('enabled-btn-effect')
+    randomColorEnabled = true
+    eraserButton.classList.remove('enabled-btn-effect')
+    eraserEnabled = false
 }else {
         //disable the random color button
-        e.target.style.cssText = 'padding: 10px;border: 2px solid rgba(34, 32, 32, 0.712);border-radius: 5px;font-size: 15px;font-family: Arial, Helvetica, sans-serif;color:rgba(34, 32, 32, 0.94);background-color: white;'
+        randomColorButton.classList.remove('enabled-btn-effect')
         randomColorEnabled = false
         defaultColor = 'black' }
 }
 
 //adding eventlister for Random color button
 randomColorButton.addEventListener('click',changeRandomColorStatus)
+
+
+//adding functionality for color picker button
+function changeColorOfChoice(e){
+    if(randomColorEnabled == true){
+    randomColorEnabled = false
+    }
+    defaultColor = e.target.value 
+}
+
+//adding event listener to  color picker button
+colorPickerButton.addEventListener('input',changeColorOfChoice)
+
+//adding functionality for hover button
+function enableHoverEffect(){
+    alert('This feature is not yet available, we are still working on it')
+}
+
+//adding event listener for hover btn
+hoverButton.addEventListener('click',enableHoverEffect)
