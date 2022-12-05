@@ -34,6 +34,7 @@ h1{
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
+    flex:0 0 auto;
 }
 #grid{
     background-color: white;
@@ -47,6 +48,16 @@ h1{
 }
 img{
     height:90%;
+}
+#color-picker-btn{
+    padding: 0;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 10%;
+    margin-bottom:4px;
+
+
 }
 button{
     padding: 10px;
@@ -78,4 +89,9 @@ button:hover{
 
 #eraser:hover{
     color: black;
+}
+
+.enabled-btn-effect{
+    background-color: gray;
+    color:whitesmoke
 }
